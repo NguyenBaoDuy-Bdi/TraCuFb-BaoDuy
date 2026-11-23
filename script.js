@@ -16,7 +16,7 @@ function runPublicSearch() {
     input.focus();
     return;
   }
-  const target = /^https?:\\/\\//i.test(value)
+  const target = /^https?:\/\//i.test(value)
     ? value
     : "https://www.facebook.com/search/top/?q=" + encodeURIComponent(value);
   notice.textContent = "Đang mở Facebook. Chỉ kết quả công khai sẽ hiển thị tùy quyền truy cập của bạn.";
@@ -30,7 +30,7 @@ document.getElementById("facebookLogin").addEventListener("click", () => {
     notice.textContent = "Chưa cấu hình API_BASE. Mở script.js và thay bằng địa chỉ backend HTTPS đã triển khai.";
     return;
   }
-  window.location.href = API_BASE.replace(/\\/$/, "") + "/auth/facebook";
+  window.location.href = API_BASE.replace(/\/$/, "") + "/auth/facebook";
 });
 
 document.getElementById("loadProfile").addEventListener("click", async () => {
@@ -40,7 +40,7 @@ document.getElementById("loadProfile").addEventListener("click", async () => {
   }
   notice.textContent = "Đang lấy hồ sơ Facebook từ backend…";
   try {
-    const response = await fetch(API_BASE.replace(/\\/$/, "") + "/api/me", {
+    const response = await fetch(API_BASE.replace(/\/$/, "") + "/api/me", {
       credentials: "include"
     });
     if (response.status === 401) {
@@ -67,7 +67,11 @@ document.getElementById("loadProfile").addEventListener("click", async () => {
   }
 });
 
-if (new URLSearchParams(location.search).get("fb_login") === "success") {
+const fbLoginStatus = new URLSearchParams(location.search).get("fb_login");
+if (fbLoginStatus === "success") {
   notice.textContent = "Đăng nhập Facebook thành công. Nhấn “Xem hồ sơ đã cấp quyền”.";
+  history.replaceState({}, document.title, location.pathname);
+} else if (fbLoginStatus === "error") {
+  notice.textContent = "Đăng nhập Facebook thất bại hoặc chưa cấu hình Meta App ID/Secret trên máy chủ.";
   history.replaceState({}, document.title, location.pathname);
 }
