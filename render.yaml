@@ -1,24 +1,13 @@
 services:
   - type: web
-    name: tracuufb-baoduy-api
-    runtime: node
+    name: tracufb-baoduy-api
+    env: node
+    plan: free
     rootDir: api
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /health
-    plan: free
     envVars:
       - key: NODE_ENV
         value: production
-      - key: SITE_ORIGIN
-        value: https://nguyenbaoduy-bdi.github.io
-      - key: SITE_URL
-        value: https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/
-      - key: SESSION_SECRET
-        generateValue: true
-      - key: META_APP_ID
+      - key: YOUTUBE_API_KEY
         sync: false
-      - key: META_APP_SECRET
-        sync: false
-      - key: GRAPH_API_VERSION
-        value: v27.0
