@@ -3,118 +3,170 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TraCuuFB-BaoDuy - Tra cứu FB Bảo Duy. Cổng thông tin và hướng dẫn tra cứu Facebook do Bảo Duy quản lý.">
-  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="TraCuuFB-BaoDuy - Tra cứu FB Bảo Duy. Bộ công cụ phân tích đường dẫn/UID, tìm kiếm công khai và xem hồ sơ Facebook được cấp quyền.">
+  <meta name="theme-color" content="#0f766e">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="googlebot" content="index, follow">
-  <meta name="keywords" content="tra cứu fb bao duy, tra cứu Facebook Bảo Duy, TraCuuFB-BaoDuy, tracuufb-baoduy">
+  <meta name="keywords" content="tra cứu fb bao duy, tra cứu Facebook Bảo Duy, TraCuuFB-BaoDuy, kiểm tra uid facebook, công cụ tra cứu fb">
   <meta name="author" content="Bảo Duy">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="TraCuuFB-BaoDuy">
   <meta property="og:title" content="TraCuuFB-BaoDuy | Tra cứu FB Bảo Duy">
-  <meta property="og:description" content="TraCuuFB-BaoDuy - cổng thông tin tra cứu Facebook do Bảo Duy quản lý.">
+  <meta property="og:description" content="TraCuuFB-BaoDuy - bộ công cụ tra cứu Facebook và kiểm tra liên kết/UID do Bảo Duy quản lý.">
   <meta property="og:url" content="https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/">
   <meta property="og:image" content="https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="TraCuuFB-BaoDuy | Tra cứu FB Bảo Duy">
-  <meta name="twitter:description" content="TraCuuFB-BaoDuy - cổng thông tin tra cứu Facebook do Bảo Duy quản lý.">
-  <meta name="twitter:image" content="https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/logo.png">
   <link rel="canonical" href="https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/">
   <title>TraCuuFB-BaoDuy | Tra cứu FB Bảo Duy</title>
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+
   <header class="topbar">
     <a class="brand" href="./">
       <img src="logo.png" alt="TraCuuFB-BaoDuy logo">
-      <span>TraCuuFB<span class="dot">-BaoDuy</span></span>
-      <span class="fb-mark" aria-label="Facebook">f</span>
+      <span class="brand-text">TraCuuFB<span class="brand-badge">-BaoDuy</span></span>
+      <span class="fb-pill" aria-label="Facebook">f</span>
     </a>
-    <nav>
-      <a href="#tinh-nang">Tính năng</a>
+    <nav class="topnav">
+      <a href="#cong-cu">Công cụ</a>
+      <a href="#lich-su">Lịch sử</a>
       <a href="#huong-dan">Hướng dẫn</a>
-      <a class="nav-button contact-button" href="https://www.facebook.com/share/1KUWFdqzpJ/" target="_blank" rel="noopener noreferrer">Liên hệ Facebook</a>
+      <a class="nav-cta" href="https://www.facebook.com/share/1KUWFdqzpJ/" target="_blank" rel="noopener noreferrer">Liên hệ Bảo Duy</a>
     </nav>
   </header>
-  <main>
+
+  <main class="container">
     <section class="hero">
-      <div class="eyebrow"><span class="pulse"></span> CỔNG THÔNG TIN TRACUUFB-BAODUY</div>
-      <div class="owner-mark">
-        <span class="owner-kicker">WEBSITE ĐƯỢC QUẢN LÝ BỞI</span>
-        <strong>BẢO DUY</strong>
-        <span class="owner-sub">TRA CỨU FB · SỬ DỤNG MIỄN PHÍ</span>
+      <div class="hero-top">
+        <span class="status-chip"><i class="dot-live"></i> HỆ THỐNG TRỰC TUYẾN · MIỄN PHÍ 100%</span>
+        <span class="owner-pill">Quản lý bởi <strong>Bảo Duy</strong></span>
       </div>
-      <h1>Tra cứu thông tin<br><span>trên một giao diện</span></h1>
-      <p class="lead">TraCuuFB-BaoDuy do Bảo Duy quản lý. Tìm hiểu và mở công cụ tra cứu Facebook từ một giao diện dễ sử dụng.</p>
-      <div class="search-card">
-        <label for="query">Đường dẫn Facebook hoặc nội dung cần tra cứu</label>
-        <div class="search-row">
-          <input id="query" type="text" placeholder="Dán đường dẫn hoặc nhập nội dung…" autocomplete="off">
-          <button type="button" id="searchBtn">Bắt đầu</button>
+      <h1>Tra cứu &amp; phân tích<br><span>liên kết Facebook</span></h1>
+      <p class="hero-sub">
+        Không gian công cụ của <strong>TraCuuFB-BaoDuy</strong> hỗ trợ phân tích đường dẫn/ID công khai, mở tìm kiếm nhanh theo bộ lọc (Mọi người, Trang, Nhóm, Bài viết, Video) và kết nối Meta OAuth chính thống.
+      </p>
+    </section>
+
+    <section class="workspace" id="cong-cu">
+      <div class="tool-tabs" role="tablist" aria-label="Chế độ tra cứu">
+        <button type="button" class="tab-btn is-active" data-mode="smart" role="tab" aria-selected="true">Phân tích &amp; Tra cứu</button>
+        <button type="button" class="tab-btn" data-mode="link-tools" role="tab" aria-selected="false">Chuẩn hóa &amp; Tách ID</button>
+        <button type="button" class="tab-btn" data-mode="oauth" role="tab" aria-selected="false">Hồ sơ OAuth (Meta)</button>
+      </div>
+
+      <div class="workbench-grid">
+        <div class="lookup-panel">
+          <div class="panel-head">
+            <label for="query">Nhập link Facebook, username, ID số hoặc từ khóa</label>
+            <div class="sample-chips">
+              <button type="button" class="sample-btn" data-sample="https://www.facebook.com/zuck">Mẫu link</button>
+              <button type="button" class="sample-btn" data-sample="100004248998423">Mẫu ID số</button>
+              <button type="button" class="sample-btn" data-sample="TraCuuFB Bao Duy">Mẫu từ khóa</button>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input id="query" type="text" placeholder="Ví dụ: https://www.facebook.com/username hoặc 1000xxxxxxxxxxxxx hoặc từ khóa…" autocomplete="off">
+            <button type="button" id="searchBtn" class="btn-primary">Tra cứu ngay</button>
+            <button type="button" id="clearBtn" class="btn-ghost" title="Xóa nội dung">Xóa</button>
+          </div>
+
+          <div class="filter-bar">
+            <span class="filter-label">Bộ lọc mở Facebook:</span>
+            <div class="filter-pills" id="filterPills">
+              <button type="button" class="filter-pill is-active" data-filter="top">Tất cả</button>
+              <button type="button" class="filter-pill" data-filter="people">Mọi người</button>
+              <button type="button" class="filter-pill" data-filter="pages">Trang</button>
+              <button type="button" class="filter-pill" data-filter="groups">Nhóm</button>
+              <button type="button" class="filter-pill" data-filter="posts">Bài viết</button>
+              <button type="button" class="filter-pill" data-filter="videos">Video</button>
+            </div>
+          </div>
+
+          <div class="action-strip">
+            <button type="button" id="openDirectBtn" class="btn-secondary">Mở liên kết trực tiếp</button>
+            <button type="button" id="copyResultBtn" class="btn-secondary">Sao chép kết quả</button>
+            <button type="button" id="facebookLogin" class="btn-fb">Đăng nhập Facebook</button>
+            <button type="button" id="loadProfile" class="btn-outline">Xem hồ sơ đã cấp quyền</button>
+            <button type="button" id="logoutBtn" class="btn-ghost">Đăng xuất phiên</button>
+          </div>
+
+          <div class="result-card" id="resultCard">
+            <div class="result-header">
+              <span class="result-badge" id="resultType">CHỜ NHẬP DỮ LIỆU</span>
+              <span class="api-status" id="apiHealthBadge">Đang kiểm tra API…</span>
+            </div>
+            <div class="result-grid" id="parsedDetails">
+              <div class="info-cell">
+                <span class="info-k">Loại đầu vào</span>
+                <strong class="info-v" id="outKind">—</strong>
+              </div>
+              <div class="info-cell">
+                <span class="info-k">Định danh / Username / ID</span>
+                <strong class="info-v" id="outIdentifier">—</strong>
+              </div>
+              <div class="info-cell">
+                <span class="info-k">URL chuẩn hóa</span>
+                <strong class="info-v mono" id="outNormalizedUrl">—</strong>
+              </div>
+              <div class="info-cell">
+                <span class="info-k">Liên kết tìm kiếm</span>
+                <strong class="info-v mono" id="outSearchUrl">—</strong>
+              </div>
+            </div>
+            <div id="fbProfile" class="fb-profile" hidden aria-live="polite"></div>
+            <p class="notice-bar" id="notice">Nhập đường dẫn, ID hoặc từ khóa để phân tích và mở tìm kiếm công khai trên Facebook.</p>
+          </div>
         </div>
-        <div class="api-actions">
-          <button type="button" class="fb-login-btn" id="facebookLogin">Đăng nhập Facebook</button>
-          <button type="button" class="profile-btn" id="loadProfile">Xem hồ sơ đã cấp quyền</button>
+
+        <aside class="side-panel" id="lich-su">
+          <div class="side-header">
+            <h2>Lịch sử tra cứu gần đây</h2>
+            <button type="button" id="clearHistoryBtn" class="link-danger">Xóa lịch sử</button>
+          </div>
+          <p class="side-desc">Lưu cục bộ trên trình duyệt của bạn để mở lại nhanh các truy vấn trước đó.</p>
+          <ul class="history-list" id="historyList">
+            <li class="history-empty">Chưa có truy vấn nào được lưu.</li>
+          </ul>
+
+          <div class="side-note">
+            <h3>Nguyên tắc minh bạch dữ liệu</h3>
+            <ul>
+              <li>Không yêu cầu nhập mật khẩu hoặc cookie Facebook tại website.</li>
+              <li>Chỉ truy xuất thông tin hồ sơ người dùng đã cấp quyền qua OAuth chính thống.</li>
+              <li>Hoàn toàn miễn phí, không thu phí hay gói trả phí.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="guide-section" id="huong-dan">
+      <div class="guide-card">
+        <div>
+          <span class="kicker">HƯỚNG DẪN NHANH</span>
+          <h2>Cách dùng bộ công cụ TraCuuFB-BaoDuy</h2>
+          <p>Dán link trang cá nhân/nhóm/bài viết hoặc nhập từ khóa, chọn bộ lọc mong muốn và bấm <strong>Tra cứu ngay</strong>. Nếu muốn hiển thị hồ sơ cá nhân theo quyền Meta Graph API, hãy bấm <strong>Đăng nhập Facebook</strong> rồi <strong>Xem hồ sơ đã cấp quyền</strong>.</p>
         </div>
-        <div id="fbProfile" class="fb-profile" hidden aria-live="polite"></div>
-        <p class="hint" id="notice">Tìm kiếm công khai hoặc đăng nhập Facebook để xem thông tin hồ sơ bạn đã đồng ý chia sẻ. API cần được triển khai và cấu hình trước.</p>
+        <a class="btn-primary link-btn" href="https://www.facebook.com/share/1KUWFdqzpJ/" target="_blank" rel="noopener noreferrer">Hỗ trợ qua Facebook ↗</a>
       </div>
-      <div class="trust-row">
-        <span>● Giao diện tương thích di động</span>
-        <span>● Không yêu cầu nhập mật khẩu Facebook tại trang này</span>
-      </div>
-    </section>
-    <section class="features" id="tinh-nang">
-      <div class="section-heading">
-        <span class="eyebrow">TỔNG QUAN</span>
-        <h2>Mọi thứ rõ ràng, dễ thao tác</h2>
-        <p>Các khu vực chính của cổng TraCuuFB-BaoDuy.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="feature">
-          <div class="feature-icon">⌕</div>
-          <h3>Tra cứu</h3>
-          <p>Mở tìm kiếm Facebook công khai hoặc đăng nhập để xem thông tin hồ sơ được Meta cho phép.</p>
-        </article>
-        <article class="feature">
-          <div class="feature-icon">◷</div>
-          <h3>Lịch sử</h3>
-          <p>Có thể bổ sung lịch sử tra cứu sau khi xây dựng hệ thống tài khoản và lưu trữ an toàn.</p>
-        </article>
-        <article class="feature">
-          <div class="feature-icon">✓</div>
-          <h3>Miễn phí</h3>
-          <p>Website này không có phương thức thanh toán, gói VIP hoặc yêu cầu nâng cấp trả phí.</p>
-        </article>
-      </div>
-    </section>
-    <section class="guide" id="huong-dan">
-      <div>
-        <span class="eyebrow">BẮT ĐẦU</span>
-        <h2>Sử dụng dịch vụ</h2>
-        <p>Truy cập website này hoàn toàn miễn phí. Chức năng hồ sơ Facebook hoạt động khi backend đã triển khai và cấu hình đúng địa chỉ API trong script.js.</p>
-      </div>
-      <span class="primary-link" aria-label="Sử dụng miễn phí">SỬ DỤNG MIỄN PHÍ</span>
-    </section>
-    <section class="contact-panel" id="lien-he">
-      <div>
-        <span class="eyebrow">KẾT NỐI</span>
-        <h2>Liên hệ <span>Bảo Duy</span></h2>
-        <p>Cần hỗ trợ hoặc trao đổi? Nhấn nút để liên hệ qua Facebook.</p>
-      </div>
-      <a class="facebook-link" href="https://www.facebook.com/share/1KUWFdqzpJ/" target="_blank" rel="noopener noreferrer">Liên hệ Bảo Duy trên Facebook <span>↗</span></a>
     </section>
   </main>
-  <footer>
-    <a class="brand small" href="./">
-      <img src="logo.png" alt="TraCuuFB-BaoDuy logo">
-      <span>TraCuuFB<span class="dot">-BaoDuy</span></span>
-      <span class="fb-mark" aria-label="Facebook">f</span>
-    </a>
-    <span>© <span id="year"></span> TraCuuFB-BaoDuy · Quản lý bởi <strong class="footer-owner">Bảo Duy</strong></span>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="brand small" href="./">
+        <img src="logo.png" alt="TraCuuFB-BaoDuy">
+        <span class="brand-text">TraCuuFB<span class="brand-badge">-BaoDuy</span></span>
+      </a>
+      <span>© <span id="year"></span> TraCuuFB-BaoDuy · Phát triển &amp; quản lý bởi <strong>Bảo Duy</strong></span>
+    </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
