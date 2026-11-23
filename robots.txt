@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/sitemap.xml
