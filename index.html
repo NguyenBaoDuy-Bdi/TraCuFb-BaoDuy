@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TraCuuFB-BaoDuy - Tra cứu FB Bảo Duy. Bộ công cụ phân tích đường dẫn/UID, tìm kiếm công khai và xem hồ sơ Facebook được cấp quyền.">
+  <meta name="description" content="TraCuuFB-BaoDuy - Tra cứu FB Bảo Duy. Bộ công cụ phân tích đường dẫn/UID, tìm kiếm công khai, lối tắt điều hướng, tiện ích video Facebook & TikTok không logo, tự động trả lời tin nhắn và hồ sơ Facebook OAuth.">
   <meta name="theme-color" content="#0f766e">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="googlebot" content="index, follow">
-  <meta name="keywords" content="tra cứu fb bao duy, tra cứu Facebook Bảo Duy, TraCuuFB-BaoDuy, kiểm tra uid facebook, công cụ tra cứu fb">
+  <meta name="keywords" content="tra cứu fb bao duy, tra cứu Facebook Bảo Duy, TraCuuFB-BaoDuy, kiểm tra uid facebook, tải video facebook, tải video tiktok không logo, tự động trả lời tin nhắn">
   <meta name="author" content="Bảo Duy">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="TraCuuFB-BaoDuy">
   <meta property="og:title" content="TraCuuFB-BaoDuy | Tra cứu FB Bảo Duy">
-  <meta property="og:description" content="TraCuuFB-BaoDuy - bộ công cụ tra cứu Facebook và kiểm tra liên kết/UID do Bảo Duy quản lý.">
+  <meta property="og:description" content="TraCuuFB-BaoDuy - bộ công cụ tra cứu Facebook, kiểm tra liên kết/UID, tiện ích video Facebook & TikTok không logo và trả lời tự động do Bảo Duy quản lý.">
   <meta property="og:url" content="https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/">
   <meta property="og:image" content="https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/logo.png">
   <link rel="canonical" href="https://nguyenbaoduy-bdi.github.io/TraCuFb-BaoDuy/">
@@ -33,8 +33,8 @@
     </a>
     <nav class="topnav">
       <a href="#cong-cu">Công cụ</a>
+      <a href="#tien-ich">Tiện ích nhanh</a>
       <a href="#lich-su">Lịch sử</a>
-      <a href="#huong-dan">Hướng dẫn</a>
       <a class="nav-cta" href="https://www.facebook.com/share/1KUWFdqzpJ/" target="_blank" rel="noopener noreferrer">Liên hệ Bảo Duy</a>
     </nav>
   </header>
@@ -45,9 +45,9 @@
         <span class="status-chip"><i class="dot-live"></i> HỆ THỐNG TRỰC TUYẾN · MIỄN PHÍ 100%</span>
         <span class="owner-pill">Quản lý bởi <strong>Bảo Duy</strong></span>
       </div>
-      <h1>Tra cứu &amp; phân tích<br><span>liên kết Facebook</span></h1>
+      <h1>Tra cứu, phân tích &amp;<br><span>tiện ích Facebook &amp; TikTok</span></h1>
       <p class="hero-sub">
-        Không gian công cụ của <strong>TraCuuFB-BaoDuy</strong> hỗ trợ phân tích đường dẫn/ID công khai, mở tìm kiếm nhanh theo bộ lọc (Mọi người, Trang, Nhóm, Bài viết, Video) và kết nối Meta OAuth chính thống.
+        Không gian công cụ của <strong>TraCuuFB-BaoDuy</strong> hỗ trợ phân tích đường dẫn/ID công khai, mở nhanh các lối tắt Facebook, chuẩn hóa link video Facebook, tải video TikTok không logo (qua backend API / nguồn công khai), thiết lập/mô phỏng tự động trả lời tin nhắn và đăng nhập Meta OAuth chính thống.
       </p>
     </section>
 
@@ -87,12 +87,160 @@
             </div>
           </div>
 
+          <div class="quick-nav-box" id="tien-ich">
+            <div class="qn-head">
+              <span class="qn-kicker">LỐI TẮT ĐIỀU HƯỚNG &amp; THAO TÁC NHANH</span>
+              <span class="qn-sub">Mở trực tiếp trên Facebook theo phiên trình duyệt hiện tại</span>
+            </div>
+            <div class="qn-grid">
+              <button type="button" class="qn-btn" data-fb-route="home">Trang chủ (Home)</button>
+              <button type="button" class="qn-btn" data-fb-route="friends">Bạn bè (Friends)</button>
+              <button type="button" class="qn-btn" data-fb-route="groups">Nhóm (Groups)</button>
+              <button type="button" class="qn-btn" data-fb-route="pages">Trang (Pages)</button>
+              <button type="button" class="qn-btn" data-fb-route="watch">Watch / Video</button>
+              <button type="button" class="qn-btn" data-fb-route="bookmarks">Menu / Lối tắt</button>
+              <button type="button" class="qn-btn" data-fb-route="sharer">Chia sẻ link</button>
+              <button type="button" class="qn-btn" data-fb-route="extract-batch">Tách danh sách UID/Link</button>
+            </div>
+            <div class="batch-box" id="batchExtractBox" hidden>
+              <label for="batchInput">Dán nhiều link hoặc chuỗi có chứa UID/URL để lọc danh sách sạch:</label>
+              <textarea id="batchInput" rows="3" placeholder="Dán mỗi dòng một link hoặc chuỗi có số ID..."></textarea>
+              <div class="batch-actions">
+                <button type="button" id="runBatchExtractBtn" class="btn-secondary">Lọc &amp; chuẩn hóa danh sách</button>
+                <button type="button" id="copyBatchBtn" class="btn-outline">Sao chép kết quả lọc</button>
+              </div>
+              <pre class="batch-output" id="batchOutput">Chưa có danh sách được lọc.</pre>
+            </div>
+          </div>
+
           <div class="action-strip">
             <button type="button" id="openDirectBtn" class="btn-secondary">Mở liên kết trực tiếp</button>
             <button type="button" id="copyResultBtn" class="btn-secondary">Sao chép kết quả</button>
             <button type="button" id="facebookLogin" class="btn-fb">Đăng nhập Facebook</button>
             <button type="button" id="loadProfile" class="btn-outline">Xem hồ sơ đã cấp quyền</button>
             <button type="button" id="logoutBtn" class="btn-ghost">Đăng xuất phiên</button>
+          </div>
+
+          <div class="video-downloader-box" id="videoDownloader">
+            <div class="vd-header">
+              <div>
+                <span class="vd-kicker">TIỆN ÍCH VIDEO FACEBOOK</span>
+                <h3>Phân tích &amp; hỗ trợ mở/tải liên kết video Facebook</h3>
+              </div>
+              <span class="vd-pill">Watch · Reel · Videos · fb.watch</span>
+            </div>
+            <p class="vd-desc">
+              Dán đường dẫn video Facebook (<code>watch</code>, <code>reel</code>, <code>/videos/</code>, <code>fb.watch</code>) hoặc lấy từ ô tra cứu ở trên để tách ID/loại video, chuẩn hóa URL và mở nhanh hoặc sao chép liên kết.
+            </p>
+            <div class="vd-input-row">
+              <input id="videoUrlInput" type="text" placeholder="Dán link video Facebook (ví dụ: https://www.facebook.com/watch/?v=... hoặc https://fb.watch/...)" autocomplete="off">
+              <button type="button" id="syncVideoFromQueryBtn" class="btn-secondary">Lấy từ ô tra cứu</button>
+              <button type="button" id="analyzeVideoBtn" class="btn-primary">Phân tích video</button>
+            </div>
+            <div class="vd-actions">
+              <button type="button" id="openVideoTabBtn" class="btn-secondary">Mở video tab mới</button>
+              <button type="button" id="copyVideoUrlBtn" class="btn-outline">Sao chép link chuẩn</button>
+              <button type="button" id="fetchBackendVideoBtn" class="btn-ghost">Kiểm tra qua API</button>
+            </div>
+            <div class="vd-meta">
+              <div><span class="info-k">Loại video</span><strong class="info-v" id="vdKind">—</strong></div>
+              <div><span class="info-k">Video ID / Mã</span><strong class="info-v" id="vdId">—</strong></div>
+              <div><span class="info-k">URL video chuẩn hóa</span><strong class="info-v mono" id="vdNormalized">—</strong></div>
+            </div>
+            <p class="vd-status" id="vdStatus">Sẵn sàng phân tích đường dẫn video. Lưu ý: quyền xem/tải media phụ thuộc trạng thái công khai của video và chính sách Facebook/Meta.</p>
+          </div>
+
+          <div class="tiktok-downloader-box" id="tiktokDownloader">
+            <div class="tt-header">
+              <div>
+                <span class="tt-kicker">TIỆN ÍCH TIKTOK KHÔNG LOGO (NO WATERMARK)</span>
+                <h3>Phân tích &amp; tải video TikTok không logo</h3>
+              </div>
+              <span class="tt-pill">tiktok.com · vm.tiktok.com · vt.tiktok.com</span>
+            </div>
+            <p class="tt-desc">
+              Dán đường dẫn video TikTok công khai (<code>tiktok.com/@user/video/...</code>, <code>vm.tiktok.com/...</code>, <code>vt.tiktok.com/...</code>) để tách Video ID, gọi backend API (<code>/api/tiktok/download</code>) lấy luồng video không logo (no watermark) và tải trực tiếp về máy.
+            </p>
+            <div class="tt-input-row">
+              <input id="ttUrlInput" type="text" placeholder="Dán link video TikTok (ví dụ: https://www.tiktok.com/@username/video/7123456789012345678 hoặc https://vt.tiktok.com/...)" autocomplete="off">
+              <button type="button" id="ttFetchBtn" class="btn-primary">Lấy link không logo</button>
+              <button type="button" id="ttClearBtn" class="btn-ghost">Xóa</button>
+            </div>
+            <div class="tt-actions">
+              <a id="ttDownloadLink" class="btn-secondary tt-dl-btn" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Tải video không logo (.mp4)</a>
+              <button type="button" id="ttCopyNoWatermarkBtn" class="btn-outline">Sao chép link không logo</button>
+              <button type="button" id="ttOpenOriginalBtn" class="btn-ghost">Mở link gốc TikTok</button>
+            </div>
+            <div class="tt-meta">
+              <div><span class="info-k">Tác giả / Username</span><strong class="info-v" id="ttAuthor">—</strong></div>
+              <div><span class="info-k">Video ID</span><strong class="info-v" id="ttVideoId">—</strong></div>
+              <div><span class="info-k">Trạng thái không logo</span><strong class="info-v mono" id="ttNoWmStatus">Chưa lấy link</strong></div>
+            </div>
+            <p class="tt-status" id="ttStatus">Sẵn sàng xử lý link TikTok. Để tải video không logo thật từ máy chủ backend, hãy cấu hình endpoint/nguồn xử lý hợp lệ trên <code>/api/tiktok/download</code> (hỗ trợ biến môi trường <code>TIKTOK_RESOLVER_API</code> hoặc <code>TIKTOK_NO_WM_URL</code>).</p>
+          </div>
+
+          <div class="auto-reply-box" id="autoReplyBox">
+            <div class="ar-header">
+              <div>
+                <span class="ar-kicker">TỰ ĐỘNG TRẢ LỜI TIN NHẮN (WEBHOOK / RULE TESTER)</span>
+                <h3>Trình thiết lập &amp; mô phỏng tự động trả lời tin nhắn Facebook</h3>
+              </div>
+              <span class="ar-pill">Từ khóa · Mặc định · Webhook</span>
+            </div>
+            <p class="ar-desc">
+              Cấu hình quy tắc trả lời tự động theo từ khóa hoặc câu trả lời mặc định cho hộp thư Page/Messenger, kiểm thử phản hồi trực tiếp trên trình duyệt và đồng bộ quy tắc lên backend API (<code>/api/auto-reply/rules</code> &amp; <code>/webhook</code>).
+            </p>
+
+            <div class="ar-form-grid">
+              <div class="ar-field">
+                <label for="arKeywords">Từ khóa kích hoạt (phân tách bằng dấu phẩy)</label>
+                <input id="arKeywords" type="text" placeholder="Ví dụ: giá, hỗ trợ, uid, video, bảo duy" autocomplete="off">
+              </div>
+              <div class="ar-field">
+                <label for="arMatchMode">Kiểu khớp từ khóa</label>
+                <select id="arMatchMode">
+                  <option value="contains">Chứa từ khóa (không phân biệt hoa/thường)</option>
+                  <option value="exact">Khớp chính xác toàn bộ tin nhắn</option>
+                  <option value="startswith">Bắt đầu bằng từ khóa</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ar-field ar-full">
+              <label for="arReplyText">Nội dung trả lời tự động</label>
+              <textarea id="arReplyText" rows="2" placeholder="Ví dụ: Chào bạn, TraCuuFB-BaoDuy đã nhận tin nhắn! Bạn cần hỗ trợ gì hãy gửi link hoặc câu hỏi nhé."></textarea>
+            </div>
+
+            <div class="ar-actions">
+              <button type="button" id="addRuleBtn" class="btn-primary">Lưu / Thêm quy tắc</button>
+              <button type="button" id="saveDefaultReplyBtn" class="btn-secondary">Lưu câu trả lời mặc định</button>
+              <button type="button" id="syncRulesApiBtn" class="btn-outline">Đồng bộ quy tắc lên API</button>
+              <button type="button" id="clearRulesBtn" class="btn-ghost">Xóa quy tắc</button>
+            </div>
+
+            <div class="ar-default-row">
+              <label for="arDefaultInput">Câu trả lời mặc định khi không khớp từ khóa:</label>
+              <input id="arDefaultInput" type="text" value="Cảm ơn bạn đã liên hệ TraCuuFB-BaoDuy. Tin nhắn của bạn đã được ghi nhận, chúng tôi sẽ phản hồi sớm nhất." autocomplete="off">
+            </div>
+
+            <div class="ar-rules-wrap">
+              <div class="ar-rules-head">
+                <strong>Danh sách quy tắc đang hoạt động</strong>
+                <span id="arRuleCount" class="ar-count">0 quy tắc</span>
+              </div>
+              <ul class="ar-rules-list" id="arRulesList">
+                <li class="ar-empty">Chưa có quy tắc từ khóa nào. Hệ thống sẽ dùng câu trả lời mặc định.</li>
+              </ul>
+            </div>
+
+            <div class="ar-sim-box">
+              <label for="arTestMsg">Mô phỏng tin nhắn khách gửi đến để kiểm tra phản hồi tự động:</label>
+              <div class="ar-sim-row">
+                <input id="arTestMsg" type="text" placeholder="Nhập tin nhắn mẫu cần test (ví dụ: cho mình xin giá hoặc hỗ trợ link)..." autocomplete="off">
+                <button type="button" id="testAutoReplyBtn" class="btn-fb">Chạy thử trả lời</button>
+              </div>
+              <div class="ar-sim-output" id="arSimOutput">Chưa chạy mô phỏng tin nhắn.</div>
+            </div>
           </div>
 
           <div class="result-card" id="resultCard">
@@ -142,17 +290,6 @@
             </ul>
           </div>
         </aside>
-      </div>
-    </section>
-
-    <section class="guide-section" id="huong-dan">
-      <div class="guide-card">
-        <div>
-          <span class="kicker">HƯỚNG DẪN NHANH</span>
-          <h2>Cách dùng bộ công cụ TraCuuFB-BaoDuy</h2>
-          <p>Dán link trang cá nhân/nhóm/bài viết hoặc nhập từ khóa, chọn bộ lọc mong muốn và bấm <strong>Tra cứu ngay</strong>. Nếu muốn hiển thị hồ sơ cá nhân theo quyền Meta Graph API, hãy bấm <strong>Đăng nhập Facebook</strong> rồi <strong>Xem hồ sơ đã cấp quyền</strong>.</p>
-        </div>
-        <a class="btn-primary link-btn" href="https://www.facebook.com/share/1KUWFdqzpJ/" target="_blank" rel="noopener noreferrer">Hỗ trợ qua Facebook ↗</a>
       </div>
     </section>
   </main>
