@@ -1,7 +1,7 @@
 // Set this to the HTTPS address where the Node API is deployed.
 // Example: https://api.your-domain.com (do not put App Secret or access token here).
 // After Render deploy: replace the value below with the service URL shown on Render.
-const API_BASE = "https://YOUR-RENDER-SERVICE.onrender.com";
+const API_BASE = "https://tracuufb-baoduy-api.onrender.com";
 const apiConfigured = !API_BASE.includes("YOUR-BACKEND-HOST");
 
 document.getElementById("year").textContent = new Date().getFullYear();
